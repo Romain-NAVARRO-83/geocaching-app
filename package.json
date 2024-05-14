@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "node-geo-distance": "^1.2.0"
+  }
+}

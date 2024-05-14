@@ -1,0 +1,26 @@
+<!-- <p><%= locals.myQuest.geoPoint[0] %></p>
+<script defer>
+    function initMap(){
+      var myLocation = {
+        lat: <%= locals.myQuest.geoPoint[0] %>,
+        lng: <%= locals.myQuest.geoPoint[1] %>
+      };
+  
+      // The map, centered at encounter
+      var map = new google.maps.Map(
+        document.getElementById('map'), {
+          zoom: 16,
+          center: myLocation
+        });
+      // The marker, positioned at encounter
+      var marker = new google.maps.Marker({
+        position: myLocation,
+        map: map
+      });
+    } 
+  </script> -->
+  
+  <gmp-map center="<%= locals.myQuest.geoPoint[0] %>,<%= locals.myQuest.geoPoint[1] %>" zoom="12" map-id="DEMO_MAP_ID" style="height:500px">
+    <gmp-advanced-marker position="<%= locals.myQuest.geoPoint[0] %>,<%= locals.myQuest.geoPoint[1] %>" title="My location"></gmp-advanced-marker>
+  </gmp-map>
+  <div id="map">Distance : <%= locals.distance %> m</div>

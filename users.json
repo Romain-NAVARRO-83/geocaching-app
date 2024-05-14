@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 1,
+        "pseudo": "Sh2o",
+        "questsDone":[2],
+        "location":[43.334576, 1.320522]
+    },
+    {
+        "id" : 2,
+        "pseudo": "Second player",
+        "questsDone":[1,2],
+        "location":[43.3326845,1.3134183]
+    }
+]

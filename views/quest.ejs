@@ -1,0 +1,10 @@
+<%- include('header') -%>
+<h1>Quest : <%= locals.myQuest.questName %></h1> 
+<% if (locals.userInfo.questsDone.includes(locals.myQuest.id)){%>
+    <p>You have already finished this quest</p>
+<%} else {%>
+    <p>You have not finished this quest yet</p>
+<%}%>
+<div id="map"></div>
+<%- include('questmap') -%>
+<%- include('footer') -%>

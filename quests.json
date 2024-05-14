@@ -1,0 +1,12 @@
+[
+    {
+    "id" : 1,
+    "questName" : "Le Donjon de Saint Sulpice",
+    "geoPoint" : [43.333095, 1.335877]
+},
+{
+    "id" : 2,
+    "questName" : "Ruisseau caché",
+    "geoPoint" : [43.328738, 1.335897]
+}
+]

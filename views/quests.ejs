@@ -1,0 +1,15 @@
+<%- include ("header") %>
+<% for (const quest of locals.quests){ %>
+<div id="quest<%= quest.id %>">
+    <h2><a href="/quests/<%= quest.id %>"><%= quest.questName %></a></h2>
+    <p><%= quest.geoPoint %></p>
+
+</div>
+<% } %>
+<gmp-map center="<%= locals.userInfo.location %>" zoom="12" map-id="loacal-quests" style="height:500px">
+    <gmp-advanced-marker position="<%= locals.userInfo.location %>" title="My location" glyph="/img/user-pin.svg" gmpClickable = true></gmp-advanced-marker>
+    <% for (const quest of locals.quests){ %>
+        <gmp-advanced-marker position="<%= quest.geoPoint %>" title="<%=quest.questName%>"></gmp-advanced-marker>
+        </div>
+        <% } %>
+  </gmp-map>
