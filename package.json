@@ -1,15 +1,16 @@
 {
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
+    "cli": "^1.0.1",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "leaflet": "^1.9.4",
     "node-geo-distance": "^1.2.0",
     "node-geocoder": "^4.3.0"
   },
-  "scripts":{
-    "db_create" : "psql -U geoquest -d geoquest -f database/create_tables.sql",
-    "db_populate" : "psql -U geoquest -d geoquest -f database/populate_tables.sql",
-    "db_reset" : "npm run db:create && npm run db:populate"
+  "scripts": {
+    "db:create": "psql -U geoquest -d geoquest -h localhost -f database/create_tables.sql",
+    "db:populate": "psql -U geoquest -d geoquest -h localhost -f database/populate_tables.sql",
+    "db:reset": "npm run db:create && npm run db:populate"
   }
 }

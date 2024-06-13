@@ -12,6 +12,13 @@ CREATE TABLE "heroes" (
     level INTEGER DEFAULT 1
 );
 
+-- Create the dungeon_masters table
+CREATE TABLE "dungeon_masters" (
+    id SERIAL PRIMARY KEY UNIQUE,
+    email TEXT,
+    password TEXT
+);
+
 -- Create the quests table
 CREATE TABLE "quests" (
     id SERIAL PRIMARY KEY UNIQUE,
@@ -19,20 +26,8 @@ CREATE TABLE "quests" (
     latitude DECIMAL,
     longitude DECIMAL,
     description TEXT NULL,
-    id_creator_hero INTEGER NULL REFERENCES heroes(id),
-    id_creator_master INTEGER NULL REFERENCES dungeon_masters(id)
-);
-
--- Create the heroes_quests table
-CREATE TABLE "heroes_quests" (
-    id SERIAL PRIMARY KEY UNIQUE,
-    id_hero INTEGER REFERENCES heroes(id),heroes
-quests
-heroes_quests
-stuff
-heroes_stuff
-dungeon_masters
-    id_quest INTEGER REFERENCES quests(id)
+    id_creator_hero INTEGER NULL,
+    id_creator_master INTEGER NULL
 );
 
 -- Create the stuff table
@@ -44,18 +39,28 @@ CREATE TABLE "stuff" (
     points DECIMAL
 );
 
+-- Create the heroes_quests table
+CREATE TABLE "heroes_quests" (
+    id SERIAL PRIMARY KEY UNIQUE,
+    id_hero INTEGER,
+    id_quest INTEGER
+);
+
 -- Create the heroes_stuff table
 CREATE TABLE "heroes_stuff" (
     id SERIAL PRIMARY KEY UNIQUE,
-    id_hero INTEGER REFERENCES heroes(id),
-    id_stuff INTEGER REFERENCES stuff(id)
+    id_hero INTEGER,
+    id_stuff INTEGER
 );
 
--- Create the dungeon_masters table
-CREATE TABLE "dungeon_masters" (
-    id SERIAL PRIMARY KEY UNIQUE,
-    email TEXT,
-    password TEXT
-);
+-- Add foreign key constraints
+ALTER TABLE "quests" ADD CONSTRAINT fk_quests_hero FOREIGN KEY (id_creator_hero) REFERENCES heroes(id);
+ALTER TABLE "quests" ADD CONSTRAINT fk_quests_master FOREIGN KEY (id_creator_master) REFERENCES dungeon_masters(id);
+
+ALTER TABLE "heroes_quests" ADD CONSTRAINT fk_heroes_quests_hero FOREIGN KEY (id_hero) REFERENCES heroes(id);
+ALTER TABLE "heroes_quests" ADD CONSTRAINT fk_heroes_quests_quest FOREIGN KEY (id_quest) REFERENCES quests(id);
+
+ALTER TABLE "heroes_stuff" ADD CONSTRAINT fk_heroes_stuff_hero FOREIGN KEY (id_hero) REFERENCES heroes(id);
+ALTER TABLE "heroes_stuff" ADD CONSTRAINT fk_heroes_stuff_stuff FOREIGN KEY (id_stuff) REFERENCES stuff(id);
 
 COMMIT;
