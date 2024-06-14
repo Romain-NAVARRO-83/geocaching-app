@@ -53,5 +53,7 @@ router.get('/', (req, res) => {
  
  
  });
+
+ router.get('/heroes', heroController.heroesPage);
 // Puis on exporte le router afin de l'utiliser quelque pars dans notre serveur
 module.exports = router;

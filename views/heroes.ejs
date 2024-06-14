@@ -1,0 +1,11 @@
+<%- include('partials/header') -%>
+<h1>All heroes</h1> 
+<% if (locals.allHeroes) { %>
+ I have heroes
+<% console.log(allHeroes) %>
+<% allHeroes.forEach(hero => { %>
+ <%= hero.pseudo %>
+<% }) %>
+<% } else{%>
+I have NO heroes
+<%}%>
