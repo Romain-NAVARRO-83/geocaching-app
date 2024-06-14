@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('postgres://geoquest:geoquest@localhost:5432/geoquest', {
+const sequelize = new Sequelize(process.env.PG_CONNEXION_STRING, {
   host: 'localhost',
   dialect: 'postgres'
 });
