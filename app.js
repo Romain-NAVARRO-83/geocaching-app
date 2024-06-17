@@ -3,6 +3,14 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 app.use(express.static('assets'));
+app.use(express.urlencoded({ extended: false }));
+const session = require('express-session');
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }))
 const geo = require('node-geo-distance');
 
 app.set("view engine", "ejs");

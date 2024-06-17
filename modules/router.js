@@ -1,18 +1,28 @@
 const express = require('express');
-// On récupère un nouveau routeur vide qu'on va modifier
 const router = express.Router();
 const heroController = require('../controllers/heroController');
-
+const questController = require('../controllers/questController');
 
 // router.use(function (req, res, next) {
 //      next();
 // })
 
-
+router.use('/*',(req, res, next) => {
+  if (req.session.isLogged === true){
+    next();
+  }else{
+    if (req.originalUrl !== '/login'){
+      res.redirect('/login');
+    }else{
+      next();
+    }
+    
+  }
+})
 router.get('/', (req, res) => {
      response.render('index');
  });
- router.get('/quests', heroController.questsPage);
+ router.get('/quests', questController.questsPage);
  
  
  // Page détail quête
@@ -35,25 +45,10 @@ router.get('/', (req, res) => {
    geo.vincenty(coord1, coord2, function(dist) {
      distance = dist;
    });
-    
- //   var vincentyDist = geo.vincentySync(coord1, coord2);
-    
-    
-    
- //   geo.haversine(coord1, coord2, function(dist) {
- //     console.log(dist);
- //   });
-    
- //   var haversineDist = geo.haversineSync(coord1, coord2);
      response.render("quest",{myQuest, "distance": distance});
- 
- 
- 
-     
- 
- 
  });
-
+ router.get('/login', heroController.loginPage);
+ router.post('/login', heroController.loginAttempt);
  router.get('/heroes', heroController.heroesPage);
 // Puis on exporte le router afin de l'utiliser quelque pars dans notre serveur
 module.exports = router;

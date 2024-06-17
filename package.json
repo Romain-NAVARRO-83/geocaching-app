@@ -5,13 +5,15 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "leaflet": "^1.9.4",
     "node-geo-distance": "^1.2.0",
     "pg": "^8.12.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "urlencode": "^2.0.0"
   },
   "scripts": {
-    "dev": "nodemom app.js",
+    "dev": "nodemon app.js",
     "db:create": "psql -U geoquest -d geoquest -h localhost -f database/create_tables.sql",
     "db:populate": "psql -U geoquest -d geoquest -h localhost -f database/populate_tables.sql",
     "db:reset": "npm run db:create && npm run db:populate"

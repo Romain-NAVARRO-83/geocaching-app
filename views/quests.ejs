@@ -1,11 +1,5 @@
 <%- include ("./partials/header") %>
-<% for (const quest of locals.quests){ %>
-<div id="quest<%= quest.id %>">
-    <h2><a href="/quests/<%= quest.id %>"><%= quest.questName %></a></h2>
-    <p><%= quest.geoPoint %></p>
 
-</div>
-<% } %>
-test : <%= locals.message %>
-  <div id="map" style = "height: 200px;"></div>
+<%= locals.message %>
+  <div id="map" style = "height: 80vh;"></div>
   <%- include ("./partials/footer") %>

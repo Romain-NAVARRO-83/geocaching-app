@@ -1,5 +1,8 @@
-<script src="/js/leaflet.js"></script>
+
 <!-- <script src="/js/maps.js"></script> -->
- <%- include('./map') %>
+<% if (locals.includeLeaflet === true){%>
+    <script src="/js/leaflet.js"></script>
+ <%- include('./maps/quests_map') %>
+ <%}%>
 </body>
 </html>

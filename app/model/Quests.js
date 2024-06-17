@@ -1,30 +1,26 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require("./sequelizeClient.js");
 
-class Hero extends Model {}
+class Quest extends Model {}
 
-Hero.init({
-  email: {
+Quest.init({
+  name: {
     type: DataTypes.TEXT,
     allowNull: false
   },
-  password: {
-    type: DataTypes.TEXT,
+  latitude: {
+    type: DataTypes.FLOAT,
     allowNull: false
   },
-  pseudo: {
-    type: DataTypes.TEXT,
-    allowNull: false
-  },
-  level: {
-    type: DataTypes.TINYINT,
+  longitude: {
+    type: DataTypes.FLOAT,
     allowNull: false
   }
 
 }, {
   sequelize,
-  tableName: "heroes",
+  tableName: "quests",
   timestamps: false,
 });
 
-module.exports = Hero;
+module.exports = Quest;

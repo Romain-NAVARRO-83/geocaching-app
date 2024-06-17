@@ -1,10 +1,17 @@
 <%- include('partials/header') -%>
 <h1>All heroes</h1> 
-<% if (locals.allHeroes) { %>
+<% if (locals.heroes) { %>
  I have heroes
-<% console.log(allHeroes) %>
-<% allHeroes.forEach(hero => { %>
- <%= hero.pseudo %>
+<% heroes.forEach(hero => { %>
+ <div>
+    <h2><%= hero.pseudo %></h2>
+<% console.log(hero.done_quests); %>
+<%= hero.done_quests.length %>
+    <% hero.done_quests.forEach(quest => { %>
+     <h3>Quêtes : <%= quest.latitude %></h3>
+    <% }) %>
+    
+ </div>
 <% }) %>
 <% } else{%>
 I have NO heroes
